@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/defaults.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .container {
+        display: flex;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      .sidebar {
+        width: 200px;
+        padding: 10px;
+        padding-top: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .menu-item {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 12px;
+        border-radius: 14px;
+        color: #9ca3af;
+        cursor: pointer;
+        transition: 0.15s ease;
+      }
+
+      .menu-item:hover {
+        background-color: #1f1f33;
+      }
+
+      .menu-item.active {
+        background-color: #1f1f33;
+        color: #ffffff;
+      }
+
+      .menu-item i {
+        width: 22px;
+        height: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #bdc2d2;
+      }
+
+      .content {
+        flex: 1;
+        margin-left: 20px;
+        display: none;
+      }
+
+      .content.active {
+        display: block;
+      }
+
+      .content h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .content p {
+        margin: 10px 0 20px;
+        color: #9ca3af;
+      }
+
+      .card {
+        background-color: var(--fourth-bg);
+        border-radius: 14px;
+        margin-bottom: 20px;
+        padding: 20px;
+        width: 450px;
+      }
+
+      .card h2 {
+        font-size: 18px;
+        margin: 0 0 8px;
+      }
+
+      .card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        color: #9ca3af;
+        cursor: pointer;
+        transition: 0.15s ease;
+      }
+
+      .option:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .server-notification {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: var(--fourth-bg);
+        color: #fff;
+        padding: 14px;
+        border-radius: 14px;
+        font-size: 16px;
+        display: none;
+        opacity: 0;
+        width: 275px;
+        transition: opacity 0.5s ease;
+      }
+
+      .server-notification.show {
+        display: block;
+        opacity: 1;
+      }
+
+      .dropdown {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        background-color: var(--secondary-bg);
+        border-radius: 14px;
+        color: #ffffff;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .input-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .input-container input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 14px;
+        background-color: var(--secondary-bg);
+        color: #ffffff;
+        border: none;
+        outline: none;
+      }
+
+      .input-container button {
+        margin-left: 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 14px;
+        background-color: var(--secondary-bg);
+        color: #ffffff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .input-container button:hover {
+        background-color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="menu-item active" data-target="about">
+          <i class="fa-regular fa-info-circle"></i>
+          About VAPOR
+        </div>
+        <div class="menu-item" data-target="prx">
+          <i class="fa-regular fa-ghost"></i>
+          Prøxy
+        </div>
+        <div class="menu-item" data-target="cloak">
+          <i class="fa-regular fa-hood-cloak"></i>
+          Cloaking
+        </div>
+      </div>
+
+      <div class="content about active">
+        <div class="card">
+          <h2>About VAPOR</h2>
+          <p>where games, privacy, and more come together in a clean and effortless experience.
+            <br><br>technonyte0 - creator
+            <br>mercuryworkshop - ultraviolet + wisp
+            <br>3kh0 - most of the games
+            <br>hyperbeam - chromium vm
+            <br>vidsrc - most movies
+            <br>google - gemini ai
+            <br>emulatorjs - emulator
+            <br>javascript - being annoying
+          </p>
+        </div>
+      </div>
+
+      <div class="content prx">
+        <div class="card">
+          <h2>Wisp Server</h2>
+          <p>
+            The backend that powers your browsing adventure.<br /><br />
+            Switching servers may resolve issues with the default server being
+            blocked. Also, if a server is down, choose another one from here.
+          </p>
+          <div class="option" data-wisp="wss://anura.pro/">
+            <i class="fa-regular fa-server"></i>
+            Default Server
+          </div>
+          <div class="option" data-wisp="wss://learn.latinliturgy.com/w/">
+            <i class="fa-regular fa-server"></i>
+            Alternate 1
+          </div>
+          <div class="option" data-wisp="wss://nauka.politechnika-nova.edu.pl/wisp/">
+            <i class="fa-regular fa-server"></i>
+            Alternate 2
+          </div>
+        </div>
+        <div class="card">
+          <h2>Prøxy Games</h2>
+          <p>If certain games are blocked by your filter, try enabling this!</p>
+          <div class="dropdown" id="prxGamesToggle">
+            <span id="prxGamesStatus">Disabled</span>
+            <i class="fa-regular fa-times" id="prxGamesIcon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="content cloak">
+        <div class="card">
+          <h2>about:blank Cloaking</h2>
+          <p>
+            Immediately open a "fake" browser tab with VAPOR in it. This causes
+            VAPOR to not be shown in your history, and is practically
+            undetectable.<br /><br />
+          </p>
+          <div class="dropdown" id="cloakToggle">
+            <span id="cloakStatus">Disabled</span>
+            <i class="fa-regular fa-times" id="cloakIcon"></i>
+          </div>
+          <div class="input-container">
+            <input type="text" id="cloakUrl" value="https://google.com" />
+            <button id="saveCloakUrl">
+              <i class="fa-regular fa-check"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Close Prevention</h2>
+          <p>Prevent the browser from closing VAPOR tabs.</p>
+          <div class="dropdown" id="closePreventToggle">
+            <span id="closePreventStatus">Disabled</span>
+            <i class="fa-regular fa-times" id="closePreventIcon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="server-notification" id="serverNotification">
+      If server settings do not apply, try running CTRL+SHIFT+R.
+    </div>
+
+    <script>
+      if (localStorage.getItem("abCloak") === null) {
+        localStorage.setItem("abCloak", "true");
+      }
+
+      const menuItems = document.querySelectorAll(".menu-item");
+      const contentDivs = document.querySelectorAll(".content");
+      const options = document.querySelectorAll(".option");
+      const serverNotification = document.getElementById("serverNotification");
+      const cloakToggle = document.getElementById("cloakToggle");
+      const cloakStatus = document.getElementById("cloakStatus");
+      const cloakIcon = document.getElementById("cloakIcon");
+      const cloakUrlInput = document.getElementById("cloakUrl");
+      const saveCloakUrlButton = document.getElementById("saveCloakUrl");
+      const prxGamesToggle = document.getElementById("prxGamesToggle");
+      const prxGamesStatus = document.getElementById("prxGamesStatus");
+      const prxGamesIcon = document.getElementById("prxGamesIcon");
+
+      const closePreventToggle = document.getElementById("closePreventToggle");
+      const closePreventStatus = document.getElementById("closePreventStatus");
+      const closePreventIcon = document.getElementById("closePreventIcon");
+
+      const proxGame = localStorage.getItem("proxGame");
+      prxGamesStatus.textContent =
+        proxGame === "true" ? "Enabled" : "Disabled";
+      prxGamesIcon.className =
+        proxGame === "true" ? "fa-regular fa-check" : "fa-regular fa-times";
+
+      prxGamesToggle.addEventListener("click", () => {
+        const isEnabled = prxGamesStatus.textContent === "Enabled";
+        prxGamesStatus.textContent = isEnabled ? "Disabled" : "Enabled";
+        prxGamesIcon.className = isEnabled
+          ? "fa-regular fa-times"
+          : "fa-regular fa-check";
+        localStorage.setItem("proxGame", !isEnabled);
+      });
+
+      cloakStatus.textContent =
+        localStorage.getItem("abCloak") === "true" ? "Enabled" : "Disabled";
+      cloakIcon.className =
+        localStorage.getItem("abCloak") === "true"
+          ? "fa-regular fa-check"
+          : "fa-regular fa-times";
+
+      cloakToggle.addEventListener("click", () => {
+        const isEnabled = cloakStatus.textContent === "Enabled";
+        cloakStatus.textContent = isEnabled ? "Disabled" : "Enabled";
+        cloakIcon.className = isEnabled
+          ? "fa-regular fa-times"
+          : "fa-regular fa-check";
+        localStorage.setItem("abCloak", !isEnabled);
+      });
+
+      const closePrevent = localStorage.getItem("closePrevent");
+      closePreventStatus.textContent =
+        closePrevent === "true" ? "Enabled" : "Disabled";
+      closePreventIcon.className =
+        closePrevent === "true" ? "fa-regular fa-check" : "fa-regular fa-times";
+
+      closePreventToggle.addEventListener("click", () => {
+        const isEnabled = closePreventStatus.textContent === "Enabled";
+        closePreventStatus.textContent = isEnabled ? "Disabled" : "Enabled";
+        closePreventIcon.className = isEnabled
+          ? "fa-regular fa-times"
+          : "fa-regular fa-check";
+        localStorage.setItem("closePrevent", !isEnabled);
+      });
+
+      saveCloakUrlButton.addEventListener("click", () => {
+        const cloakUrl = cloakUrlInput.value;
+        localStorage.setItem("abCloakUrl", cloakUrl);
+        alert("ABCloak URL saved as " + cloakUrl);
+      });
+
+      menuItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          menuItems.forEach((menu) => menu.classList.remove("active"));
+          contentDivs.forEach((content) => content.classList.remove("active"));
+
+          item.classList.add("active");
+          const target = item.getAttribute("data-target");
+          document.querySelector(`.${target}`).classList.add("active");
+        });
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          const wispUrl = option.getAttribute("data-wisp");
+          localStorage.setItem("proxServer", wispUrl);
+          options.forEach((opt) => (opt.style.backgroundColor = ""));
+          option.style.backgroundColor = "rgba(255,255,255,0.2)";
+          serverNotification.classList.add("show");
+          setTimeout(() => {
+            serverNotification.classList.remove("show");
+          }, 5000);
+        });
+      });
+    </script>
+  </body>
+</html>
