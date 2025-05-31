@@ -1,0 +1,32 @@
+/**
+* default styles
+* these are the root styles for the whole site
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("/_a/fa/css/all.min.css");
+
+:root {
+  --bg: #0a111d;
+  --secondary-bg: #2b384d;
+  --third-bg: #444f60;
+  --fourth-bg: #212630;
+  --primary: #a4b8db;
+  --secondary: #7d93ba;
+  --text-color: #d5dce8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
