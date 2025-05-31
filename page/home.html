@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #0a111d;
+        }
+
+        .content-container {
+            height: calc(100% - 25px);
+            width: 100%;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+
+        body {
+            background: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: "Inter", sans-serif;
+        }
+
+        .content {
+            text-align: right;
+            margin-right: 30px;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: zoomL 1s forwards 0.2s;
+        }
+
+        h1 {
+            margin: 0;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 65px;
+        }
+
+        h1 span {
+            font-weight: 1000;
+            color: var(--text-color);
+        }
+
+        p {
+            margin: 10px 0 0 0;
+            color: var(--secondary);
+            font-size: 27px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        img {
+            width: 300px;
+            margin-left: -10px;
+            transform: translateY(-15px);
+            opacity: 0;
+            animation: zoomR 1s forwards;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -99;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomR {
+            0% {
+                transform: translateX(100%) scale(1);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomL {
+            0% {
+                opacity: 0;
+                transform: translateX(25px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #btm-container {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: auto;
+        }
+
+        .btm-div {
+            margin: 0 5px;
+            background-color: none;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            font-weight: 400;
+            transition: 0.15s ease;
+        }
+
+        .btm-div:hover {
+            background: #2b384d;
+        }
+
+        .title {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        
+
+        .extra-text {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            font-size: 16px;
+            font-weight: 500;
+            width: 400px;
+            text-align: center;
+            opacity: 0;
+            animation: upward 0.4s ease 1s forwards;
+        }
+
+        @keyframes upward {
+            from {
+                bottom: 10px;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 20px;
+                opacity: 1;
+            }
+        }
+
+        .phrase {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 35px;
+            margin: 0;
+        }
+        
+        #ad {
+            position:fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            border-radius: 10px;
+        }
+        #reopen-modal-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        #reopen-modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #49517c;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        #reopen-modal-btn:hover {
+            background-color: #5a6290;
+        }
+
+    </style>
+</head>
+
+<body>
+    <iframe id="ad" data-aa='2395296' src='//ad.a-ads.com/2395296?size=728x90' style='width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+
+    <div id="particles-js"></div>
+    <div class="content-container">
+        <div class="content">
+            <h1>VAPOR <span>v3</span></h1>
+            <p class="phrase">is for NOTHING</p>
+        </div>
+        <img src="/_a/logo.png" alt="Logo" />
+    </div>
+    <div id="btm-container">
+        <!--<div class="btm-div" id="infoButton">
+        <span class="title">Information</span>
+      </div>-->
+    </div>
+
+    <div id="reopen-modal-container">
+        <button id="reopen-modal-btn">📢 What's New</button>
+    </div>
+          
+
+    <script>
+
+        const phrases = [
+            "is for gaming",
+            "is for searching",
+            "is for music",
+            "is for emulators",
+            "is for VMs",
+            "is for AI",
+            "is for unbløcking",
+            "is for you"
+        ];
+
+        let currentIndex = 0;
+
+        function cyclePhrases() {
+            const phraseText = document.querySelector(".phrase");
+            const phrase = phrases[currentIndex];
+            const words = phrase.split(" ");
+            const lastWord = words[words.length - 1];
+            const phraseWithBoldLastWord = words.slice(0, -1).join(" ") + " <strong>" + lastWord + "</strong>";
+
+            phraseText.innerHTML = phraseWithBoldLastWord;
+            phraseText.style.opacity = 0;
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % phrases.length;
+
+                const nextPhrase = phrases[currentIndex];
+                const nextWords = nextPhrase.split(" ");
+                const nextLastWord = nextWords[nextWords.length - 1];
+                const nextPhraseWithBoldLastWord = nextWords.slice(0, -1).join(" ") + " <span style='font-weight:700;'>" + nextLastWord + "</strong>";
+
+                setTimeout(() => {
+                    phraseText.innerHTML = nextPhraseWithBoldLastWord;
+                    phraseText.style.opacity = 1;
+                }, 0);
+            }, 0);
+        }
+
+        setInterval(cyclePhrases, 4500);
+
+        window.onload = () => {
+            const phraseText = document.querySelector(".phrase");
+
+            phraseText.style.opacity = 1;
+            cyclePhrases();
+            
+            checkMod();
+        };
+
+
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800,
+                    },
+                },
+                color: {
+                    value: "#ffffff",
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000",
+                    },
+                    polygon: {
+                        nb_sides: 5,
+                    },
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false,
+                    },
+                },
+                size: {
+                    value: 2,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false,
+                    },
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 50,
+                    color: "#ffffff",
+                    opacity: 0.1,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "right",
+                    random: true,
+                    straight: true,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200,
+                    },
+                },
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: false,
+                        mode: "repulse",
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push",
+                    },
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1,
+                        },
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3,
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4,
+                    },
+                    push: {
+                        particles_nb: 25,
+                    },
+                    remove: {
+                        particles_nb: 2,
+                    },
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
+    <script>
+        document.getElementById("reopen-modal-btn").addEventListener("click", () => {
+          if (window.parent && typeof window.parent.showModal === "function") {
+            window.parent.showModal();
+          } else {
+            console.warn("Modal function not found in parent.");
+          }
+        });
+    </script>
+      
+</body>
+
+</html>
